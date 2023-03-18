@@ -1,0 +1,299 @@
+@use "../global/" as *;
+
+.dart-section {
+  padding: 16rem 2rem;
+  position: relative;
+}
+
+.p1 {
+  order: 1;
+  @media (max-width: 1270px) {
+    order: 2;
+  }
+}
+.nb {
+  order: 2;
+  @media (max-width: 1270px) {
+    order: 1;
+  }
+}
+.p2 {
+  order: 3;
+}
+
+.dart-content {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 3rem;
+
+  @media (max-width: 1270px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  &__player {
+    border: 2px solid rgba(0, 0, 0, 0.173);
+    width: 35rem;
+    height: 50rem;
+    border-radius: 1rem;
+    background-color: $blue;
+    -webkit-box-shadow: 5px 9px 12px 0px rgba(0, 0, 0, 0.27);
+    -moz-box-shadow: 5px 9px 12px 0px rgba(0, 0, 0, 0.27);
+    box-shadow: 5px 9px 12px 0px rgba(0, 0, 0, 0.27);
+    padding: 4rem 2rem;
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
+    text-align: center;
+    position: relative;
+
+    @media (max-width: 450px) {
+      width: 30rem;
+    }
+
+    img {
+      position: absolute;
+      width: 9rem;
+      height: auto;
+      top: -4rem;
+      right: -4rem;
+
+      @media (max-width: 450px) {
+        display: none;
+      }
+    }
+
+    &__name {
+      border-bottom: 2px solid white;
+      padding-bottom: 2rem;
+
+      p {
+        font-size: 2rem;
+        color: white;
+        font-weight: 600;
+
+        span {
+          color: red;
+        }
+      }
+    }
+
+    &__points {
+      display: flex;
+
+      span {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        width: 100%;
+        padding: 3rem 0;
+        list-style: none;
+
+        p {
+          font-size: 1.9rem;
+          color: white;
+          font-weight: 600;
+          margin-bottom: 0.5rem;
+        }
+      }
+    }
+  }
+
+  &__number-table {
+    width: 35rem;
+    height: 50rem;
+    border-radius: 1rem;
+    background-color: $black;
+    position: relative;
+
+    background-image: url("/src/images/dartgame.png");
+    background-size: cover;
+    background-position: -12rem 1rem;
+
+    -webkit-box-shadow: 5px 9px 12px 0px rgba(0, 0, 0, 0.27);
+    -moz-box-shadow: 5px 9px 12px 0px rgba(0, 0, 0, 0.27);
+    box-shadow: 5px 9px 12px 0px rgba(0, 0, 0, 0.27);
+    color: white;
+    padding: 3rem;
+
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+
+    @media (max-width: 450px) {
+      width: 30rem;
+    }
+
+    p {
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 3rem;
+      z-index: 2;
+    }
+
+    &__input-numbers {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+      z-index: 2;
+
+      input {
+        width: 100%;
+        padding: 1.3rem 3rem;
+        font-size: 1.6rem;
+        border: none;
+        outline: none;
+        border-radius: 5px;
+      }
+    }
+  }
+}
+
+.numbers-div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+
+  &__1col {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+
+    button {
+      height: 5rem;
+      cursor: pointer;
+      background-color: white;
+      border-radius: 1rem;
+      font-size: 1.5rem;
+      font-weight: 600;
+      border: none;
+      transition: all 0.08s;
+      &:hover {
+        background-color: green;
+        color: white;
+      }
+    }
+  }
+
+  &__2col {
+    display: grid;
+    grid-template-columns: 70fr 33fr;
+    gap: 1rem;
+
+    button {
+      height: 5rem;
+      cursor: pointer;
+      background-color: white;
+      border-radius: 1rem;
+      font-size: 1.5rem;
+      font-weight: 600;
+      border: none;
+      transition: all 0.08s;
+      &:hover {
+        background-color: green;
+        color: white;
+      }
+    }
+  }
+}
+
+.overlay {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.3);
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  border-radius: 1rem;
+}
+
+.add-score {
+  margin-top: 2rem;
+  padding: 1rem 0;
+  border-radius: 0.5rem;
+  border: none;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: white;
+  background-color: green;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.video-modal {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  z-index: 5;
+  transform: translate(-50%, -50%);
+  @media (max-width: 450px) {
+    top: 15%;
+  }
+
+  @media (max-width: 1270px) {
+    top: 20%;
+  }
+
+  video {
+    width: 45rem;
+    height: 30rem;
+    border: 1rem solid $black;
+    border-radius: 1rem;
+    background-color: black;
+    -webkit-box-shadow: 5px 9px 12px 0px rgba(0, 0, 0, 0.27);
+    -moz-box-shadow: 5px 9px 12px 0px rgba(0, 0, 0, 0.27);
+    box-shadow: 5px 9px 12px 0px rgba(0, 0, 0, 0.27);
+
+    @media (max-width: 450px) {
+      width: 30rem;
+    }
+  }
+}
+
+.win-msg {
+  font-size: 5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 10rem 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+
+  button {
+    width: 18rem;
+    height: 5rem;
+    margin: 0 auto;
+    margin-top: 3rem;
+    color: white;
+    background-color: $blue;
+    border: none;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 1rem;
+    transition: all 0.2s;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  span {
+    color: $blue;
+  }
+}
